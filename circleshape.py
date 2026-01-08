@@ -15,11 +15,9 @@ class CircleShape(pygame.sprite.Sprite):
         self.radius = radius
 
     def draw(self, screen):
-        # must override
         pygame.draw.polygon(surface=screen, color="white",points=self.triangle(), width=LINE_WIDTH)
 
     def update(self, dt):
-        # must override
         pass
 
     def collides_with(self, other):

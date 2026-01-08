@@ -5,9 +5,8 @@ class Asteroid(CircleShape):
     super().__init__(x, y, radius)
   
   def draw(self, screen):
-        # must override
-        pygame.draw.circle(surface=screen, color="white", center=(self.position), radius= self.radius, width=LINE_WIDTH)
+    pygame.draw.circle(surface=screen, color="white", center=(self.position), radius= self.radius, width=LINE_WIDTH)
   
   def update(self, dt):
-        self.position += self.velocity * dt
+    self.position += self.velocity * dt
 

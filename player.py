@@ -1,6 +1,8 @@
-from constants import PLAYER_RADIUS, PLAYER_TURN_SPEED, PLAYER_SPEED
+from constants import *
 from circleshape import CircleShape
+from shot import Shot
 import pygame
+
 
 class Player(CircleShape):
   def __init__(self,x ,y):
@@ -23,17 +25,27 @@ class Player(CircleShape):
     rotated_with_speed_vector = rotated_vector * PLAYER_SPEED * dt
     self.position += rotated_with_speed_vector
 
+  def shoot(self):
+    shot = Shot(self.position.x, self.position.y, SHOT_RADIUS)
+    shot.velocity = pygame.Vector2(0, 1).rotate(self.rotation) * PLAYER_SHOOT_SPEED
+    
 
   def update(self, dt):
-        keys = pygame.key.get_pressed()
+    keys = pygame.key.get_pressed()
 
-        if keys[pygame.K_a]:
-            self.rotation -= PLAYER_TURN_SPEED * dt
-        if keys[pygame.K_d]:
-            self.rotation += PLAYER_TURN_SPEED * dt
-        if keys[pygame.K_w]:
-            self.move(dt)
-        if keys[pygame.K_s]:
-            self.move((-dt))
+    if keys[pygame.K_a]:
+      self.rotation -= PLAYER_TURN_SPEED * dt
+    if keys[pygame.K_d]:
+      self.rotation += PLAYER_TURN_SPEED * dt
+    if keys[pygame.K_w]:
+      self.move(dt)
+    if keys[pygame.K_s]:
+      self.move((-dt))
+    if keys[pygame.K_SPACE]:
+      self.shoot()
+
+  
+    
+
 
     
