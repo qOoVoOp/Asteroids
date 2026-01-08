@@ -59,7 +59,8 @@ def main():
                 shot_collision = CircleShape.collides_with(asteroid, shot)
                 if shot_collision:
                     log_event("asteroid_shot")
-                    asteroid.kill()
+                    asteroid.split()
+                    shot.kill()
 
 
 
